@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva para o Natal</title>
+</head>
+<body>
+    <div id="contagem-regressiva"></div>
+
+    <script>
+        const natal = new Date(new Date().getFullYear(), 11, 25);
+
+        var relogio = setInterval(function () {
+            let agora = new Date();
+            let diferenca = natal - agora;
+
+            let dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            let horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            let segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            horas = horas < 10 ? "0" + horas : horas;
+            minutos = minutos < 10 ? "0" + minutos : minutos;
+            segundos = segundos < 10 ? "0" + segundos : segundos;
+
+            const contagemRegressivaElement = document.getElementById("contagem-regressiva");
+
+            // Atualize o conteúdo desse elemento
+            contagemRegressivaElement.innerHTML = `${dias} dias ${horas}:${minutos}:${segundos}`;
+
+            if (diferenca <= 0) {
+                clearInterval(relogio);
+                contagemRegressivaElement.innerHTML = "Feliz Natal!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
