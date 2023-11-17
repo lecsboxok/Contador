@@ -5,39 +5,54 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Playfair';
+    src: url(fonts/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
 body {
-    background-color: #77D97E;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #B0D9CD;
+    font-family: 'Playfair', sans-serif;
 }
 
 .geral {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 .imgGorro img {
     width: 100px;
 }
 
+h1 {
+    font-size: 7vh;
+}
+
+h2 {
+    font-size: 4vh;
+}
+
 #contagem-regressiva {
     display: flex;
-    text-align: center;
-    font-size: 2em;
-    padding: 10px;
-    
+    align-items: center;
+    justify-content: center;
+}
+
+.tempo span {
+    font-size: 8vh;
 }
 
 .tempo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin: 0 10px;
-    font-size: 1.5em;
-    color: #FCFCFC;
+    font-size: 4vh;
+    color: #0D0D0D;
 }
 
 #barraProgresso {
@@ -45,7 +60,7 @@ body {
     height: 20px; 
     background-color: #eee;
     margin: auto;
-    margin-bottom: 20px;
+    margin-top: 20px;
     border-radius: 10px;
 }
 
@@ -54,11 +69,20 @@ body {
     width: 0;
     background: repeating-linear-gradient(
         45deg,
-        #F20505,
-        #F20505 10px,
-        #FcFcFc 10px,
-        #FcFcFc 20px
+        #F2274C,
+        #F2274C 10px,
+        #EBEBFF 10px,
+        #EBEBFF 20px
       );
     border-radius: 10px;
     transition: 1s linear;
+}
+
+@media screen and (max-width: 400px) {
+    
+    #barraProgresso {
+        width: 320px;
+    }
+
+
 }
