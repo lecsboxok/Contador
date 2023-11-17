@@ -4,3 +4,61 @@
     border: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: #77D97E;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.geral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgGorro img {
+    width: 100px;
+}
+
+#contagem-regressiva {
+    display: flex;
+    text-align: center;
+    font-size: 2em;
+    padding: 10px;
+    
+}
+
+.tempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 1.5em;
+    color: #FCFCFC;
+}
+
+#barraProgresso {
+    width: 400px;
+    height: 20px; 
+    background-color: #eee;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#progresso {
+    height: 100%;
+    width: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        #F20505,
+        #F20505 10px,
+        #FcFcFc 10px,
+        #FcFcFc 20px
+      );
+    border-radius: 10px;
+    transition: 1s linear;
+}

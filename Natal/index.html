@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva para o Natal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="contagem-regressiva"></div>
+    <div class="geral">
+        <div class="imgGorro">
+            <img src="gorro-do-papai-noel.png" alt="">
+        </div>
+        <h1>Natal</h1>
+        <h2>Contagem regressiva</h2>
+        <div id="contagem-regressiva">
+            <div class="tempo"><span id="dias"></span>DIAS</div>
+            <div class="tempo"><span id="horas"></span>H</div>
+            <div class="tempo"><span id="minutos"></span>MIN</div>
+            <div class="tempo"><span id="segundos"></span>S</div>
+        </div>
+        <div id="barraProgresso">
+            <div id="progresso"></div>
+        </div>
+    </div>
 
     <script>
+        const inicioContagem = new Date(new Date().getFullYear(), 9, 25);
         const natal = new Date(new Date().getFullYear(), 11, 25);
+        let progresso = 0;
 
-        var relogio = setInterval(function () {
+        function atualizarContador() {
             let agora = new Date();
-            let diferenca = natal - agora;
+            let diferencaTotal = natal - inicioContagem;
+            let diferencaAtual = natal - agora;
 
-            let dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-            let horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-            let segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+            let dias = Math.floor(diferencaAtual / (1000 * 60 * 60 * 24));
+            let horas = Math.floor((diferencaAtual % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutos = Math.floor((diferencaAtual % (1000 * 60 * 60)) / (1000 * 60));
+            let segundos = Math.floor((diferencaAtual % (1000 * 60)) / 1000);
 
             horas = horas < 10 ? "0" + horas : horas;
             minutos = minutos < 10 ? "0" + minutos : minutos;
             segundos = segundos < 10 ? "0" + segundos : segundos;
 
-            const contagemRegressivaElement = document.getElementById("contagem-regressiva");
+            document.getElementById("dias").innerHTML = `${dias}`;
+            document.getElementById("horas").innerHTML = `${horas}`;
+            document.getElementById("minutos").innerHTML = `${minutos}`;
+            document.getElementById("segundos").innerHTML = `${segundos}`;
 
-            // Atualize o conteúdo desse elemento
-            contagemRegressivaElement.innerHTML = `${dias} dias ${horas}:${minutos}:${segundos}`;
+            progresso = ((diferencaTotal - diferencaAtual) / diferencaTotal) * 100;
+            document.getElementById('progresso').style.width = progresso + '%';
 
-            if (diferenca <= 0) {
+            if (agora >= natal) {
                 clearInterval(relogio);
-                contagemRegressivaElement.innerHTML = "Feliz Natal!";
+                document.getElementById("contagem-regressiva").innerHTML = "Feliz Natal!";
             }
-        }, 1000);
+        }
+
+        function pausarContador() {
+            clearInterval(posicao);
+        }
+
+        var relogio = setInterval(atualizarContador, 1000);
+
+        // Iniciar o contador assim que a página for carregada
+        window.onload = function () {
+            atualizarContador();
+        };
     </script>
 </body>
+
 </html>
