@@ -81,7 +81,6 @@ h2 {
     animation: move 2s linear infinite;
     overflow: hidden;
 
-
 }
 
 #barraProgresso>#progresso {
@@ -102,7 +101,7 @@ h2 {
 
     100% {
         background-position: 50px 50px;
-    }
+    } 
 }
 
 @media screen and (max-width: 400px) {
